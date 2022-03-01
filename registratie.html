@@ -21,7 +21,7 @@
             form.password = document.getElementById("password").value;
             form.passwordRepeat = document.getElementById("password-repeat").value;
             let data = JSON.stringify(form);
-            fetch(url + "/create-user", {
+            fetch(url + "/createuser", {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'
                 },

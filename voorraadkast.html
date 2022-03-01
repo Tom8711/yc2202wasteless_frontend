@@ -29,7 +29,7 @@
             form.amount = document.getElementById("Hoeveelheid").value;
             form.offered = document.getElementById("Aanbieden").checked;
             let data = JSON.stringify(form);
-            fetch(url + "", {   //// =====>> nieuw endpoint invullen
+            fetch(url + "/createitem", {   //// =====>> nieuw endpoint invullen
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,7 +45,7 @@
         }
 
         function getAllItemsSortedByDate() {
-            fetch(url + "")//// =====>> nieuw endpoint invullen
+            fetch(url + "/getlistitembydate")//// =====>> nieuw endpoint invullen
                 .then((response) => {
                     return response.json();
                 })
@@ -78,7 +78,7 @@
         }
 
         function deleteItem(userId) {
-            fetch(url + "" + userId, {//// =====>> nieuw endpoint invullen
+            fetch(url + "/deleteitem/" + userId, {//// =====>> nieuw endpoint invullen
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
