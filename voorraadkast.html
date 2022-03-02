@@ -22,14 +22,16 @@
         }
 
         function createItem() {
-            let form = {};
+            const createItemDto = {
+                "item":{
+                    "name":document.getElementById("name").value, 
+                    "expirationDate":document.getElementById("date").value, 
+                    "amount":document.getElementById("number").value
+                },
+                "userId":1
+            }
 
-            form.name = document.getElementById("name").value;
-            form.expirationDate = document.getElementById("date").value;
-            form.amount = document.getElementById("number").value;
-            form.weight = document.getElementById("amount").value;
-            form.offered = document.getElementById("offered").checked;
-            let data = JSON.stringify(form);
+            let data = JSON.stringify(createItemDto);
             console.log(data);
             fetch(url + "/createitem", {   //// =====>> nieuw endpoint invullen
                 method: 'POST',
