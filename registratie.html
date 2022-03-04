@@ -10,33 +10,11 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="style.css" />
-    <script>
-        //const url = 'http://localhost:8082';
-        const url = 'https://yc2202.azurewebsites.net'
-        function createUser(){
-            let form = {};
-            form.userName = document.getElementById("name").value;
-            form.email = document.getElementById("email").value;
-            form.password = document.getElementById("password").value;
-            form.passwordRepeat = document.getElementById("password-repeat").value;
-            let data = JSON.stringify(form);
-            console.log(data);
-            fetch(url + "/createuser", {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'
-                },
-                body: data
-            })
-            .then(() => {
-                alert("succes")
-            })
-            .catch(error => {
-                alert('Er is iets fout gegaan');
-            });
-        }
+        crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="config.js"></script>
+    <script src="registratie.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
