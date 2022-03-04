@@ -9,9 +9,10 @@ function createItem() {
         "item":{
             "name":document.getElementById("name").value, 
             "expirationDate":document.getElementById("date").value, 
-            "amount":document.getElementById("number").value
+            "amount":document.getElementById("amount").value,
+            "offered":document.getElementById("offered").checked
         },
-        "userId":1
+        "userId":localStorage.getItem("userId")
     }
 
     let data = JSON.stringify(createItemDto);
