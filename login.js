@@ -5,11 +5,10 @@ function checkLogin(username, password){
         })
         .then((data) => {
            setUserId(data.id);
-           console.log("onder 8");
         })
-        // .catch(error =>{
-        //     alert("Username bestaat niet.")
-        // })
+        .catch(error =>{
+            alert("Username bestaat niet.")
+        })
 }
 
 
@@ -24,6 +23,7 @@ function loginUser() {
 }
 
 function setUserId(userid) {
-    localStorage.setItem("userId", userid);
+    localStorage.setItem("userid", userid);
+    window.location = "voorraadkast.html";
     console.log("tom was here");
 }

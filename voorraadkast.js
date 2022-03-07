@@ -33,7 +33,8 @@ function createItem() {
 }
 
 function getAllItemsSortedByDate() {
-    fetch(url + "/getitemswithuserid/" + localStorage.getItem("userId"))//// =====>> nieuw endpoint invullen
+
+    fetch(url + "/getitemswithuserid/" + localStorage.getItem("userid"))//// =====>> nieuw endpoint invullen
         .then((response) => {
             return response.json();
         })
