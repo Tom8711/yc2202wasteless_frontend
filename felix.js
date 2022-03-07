@@ -1,7 +1,7 @@
 function checkLoggedIn() {
-  let userid = localStorage.getItem("userid");
+  let userId = localStorage.getItem("userId");
   let loginButton = document.getElementById("inlogbutton");
-  if (userid == null) {
+  if (userId == null) {
     loginButton.innerHTML = "Inloggen";
     loginButton.onclick = goToLogin;
   } else {

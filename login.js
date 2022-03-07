@@ -8,9 +8,9 @@ function checkLogin(username, password) {
             }
             throw new Error()
         })
-        //The method setUserId will be called with the userid as an argument.
+        //The method setuserId will be called with the userId as an argument.
         .then((data) => {
-            setUserId(data.id);
+            setuserId(data.id);
         })
         .catch(error => {
             alert("Wachtwoord of Username is onjuist")
@@ -24,8 +24,8 @@ function loginUser() {
     checkLogin(username, password);
 }
 
-//setUserId() takes the userid and uses it to set the localstorage variable.
-function setUserId(userid) {
-    localStorage.setItem("userid", userid);
+//setuserId() takes the userId and uses it to set the localstorage variable.
+function setuserId(userId) {
+    localStorage.setItem("userId", userId);
     window.location = "voorraadkast.html";
 }
