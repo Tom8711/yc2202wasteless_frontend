@@ -44,7 +44,7 @@ function createItem() {
 }
 
 function getAllItemsWithClaim(){
-    fetch(`${url}/getclaimeditemswithuserid/${localStorage.getItem("userid")}`)//// =====>> nieuw endpoint invullen
+    fetch(`${url}/getclaimeditemswithuserid/${localStorage.getItem("userId")}`)//// =====>> nieuw endpoint invullen
         .then((response) => {
             return response.json();
         })
