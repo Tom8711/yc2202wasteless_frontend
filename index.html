@@ -68,7 +68,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuleren</button>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        onclick="claimItem(x)">Verstuur claim</button>
+                        onclick="claimItem(localStorage.getItem('itemid'))">Verstuur claim</button>
                 </div>
             </div>
         </div>
@@ -82,5 +82,3 @@
 </script>
 
 </html>
-
-

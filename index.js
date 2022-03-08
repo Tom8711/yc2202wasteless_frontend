@@ -1,14 +1,13 @@
 function claimItem(itemId) {
+  localStorage.removeItem("itemid")
   let result = fetch(url + '/claim/' + itemId + '/createclaim', {
     method: 'POST'
 
   })
 }
 
-let x = 5
-
-function localVariable(){
-  
+function localVariable(itemid) {
+  localStorage.setItem("itemid", itemid)
 }
 
 
@@ -26,7 +25,7 @@ function getSubmittedItems() {
         <img src="kaas.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">${data[y].name}  
-            <button type="button" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="localVariable()">Claim!</button>
+            <button type="button" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="localVariable(${data[y].id})">Claim!</button>
             <p class="card-text">
               houdbaarheidsdatum: ${data[y].expirationDate}
             </p>
