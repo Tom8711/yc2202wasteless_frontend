@@ -1,12 +1,19 @@
-function checkInloggen(){
-  console.log("ik ga checkinloggen implementeren");
-  let userid = localStorage.getItem("wastelessuserid");
-  let inlogknop = document.getElementById("inlogbutton");
-  console.log(inlogknop);
-  if(userid == undefined){
-    inlogknop.innerHTML = "Inloggen"
-  }else{
-    inlogknop.innerHTML = "Voorraadkast"
+function checkLoggedIn() {
+  let userId = localStorage.getItem("userId");
+  let loginButton = document.getElementById("inlogbutton");
+  if (userId == null) {
+    loginButton.innerHTML = "Inloggen";
+    loginButton.onclick = goToLogin;
+  } else {
+    loginButton.innerHTML = "Mijn Voorraadkast";
+    loginButton.onclick = goToMijnVoorraad;
   }
 }
-window.onload = checkInloggen;
+window.onload = checkLoggedIn;
+
+function goToLogin() {
+  window.location = "login.html";
+}
+function goToMijnVoorraad() {
+  window.location = "voorraadkast.html";
+}
