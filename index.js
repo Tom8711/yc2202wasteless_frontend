@@ -3,6 +3,9 @@ function claimItem(itemId) {
   let result = fetch(url + '/claim/' + itemId + '/createclaim', {
     method: 'POST'
   })
+  .then(() => {
+    getSubmittedItems();
+  })
 }
 
 function localVariable(itemid) {
@@ -54,7 +57,7 @@ function getSubmittedItems() {
                     </div>
                   </div>
                 </div>`;}
-      }
+    }
       document.getElementById("itemList").innerHTML = resultString;
     })
 }
