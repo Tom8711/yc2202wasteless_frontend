@@ -2,18 +2,13 @@ function claimItem(itemId) {
   localStorage.removeItem("itemid")
   let result = fetch(url + '/claim/' + itemId + '/createclaim', {
     method: 'POST'
-  })
-}
+   })
+  }
 
 function localVariable(itemid) {
-  let userId = localStorage.getItem("userId")
-  if (userId == null){
-    alert("Je moet inloggen om te kunnen claimen!")
-  }
-  else{
     localStorage.setItem("itemid", itemid)
   }
-}
+
 
 function removeLocalStorage(itemid){
   localStorage.removeItem("itemid")
