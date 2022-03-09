@@ -21,7 +21,8 @@ function createItem() {
             "name":document.getElementById("name").value, 
             "expirationDate":document.getElementById("date").value, 
             "amount":document.getElementById("amount").value,
-            "offered":document.getElementById("offered").checked
+            "offered":document.getElementById("offered").checked,
+            "photo":"./photos/kaas.jpg"
         },
         "userId":localStorage.getItem("userId")
     }
@@ -54,7 +55,7 @@ function getAllItemsWithClaim(){
                 resultString +=
                     `<div class="col">
         <div class="card">
-        <img src="kaas.jpg" class="card-img-top" alt="...">
+        <img src="${data[y].photo}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title text-center">${data[y].name} </h5>
             <p class="card-text">
@@ -93,7 +94,7 @@ function getAllItemsSortedByDate() {
                 resultString +=
                     `<div class="col">
         <div class="card">
-        <img src="kaas.jpg" class="card-img-top" alt="...">
+        <img src="${data[y].photo}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">${data[y].name} `
                 if(!data[y].offered){
