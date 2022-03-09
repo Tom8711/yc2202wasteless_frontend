@@ -43,21 +43,40 @@ function createItem() {
         });
 }
 
-function acceptClaim(claimId) {
-    console.log(claimId)
-    let result = fetch(url + "/claim/" + claimId + "/accept", {
-        method: 'POST'
+function acceptClaim(itemid) {
+    fetch(url + "/claim/" + itemid + "/getclaims")
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data)
+            for (let y = 0; y < data.length; y++) {
+                if (data[y].status == "PENDING") {
+                    fetch(url + "/claim/" + data[y].id + "/accept", {
+                        method: 'POST'
+                    })
+                }
+            }
+        })
 
-    })
 }
 
+function declineClaim(itemid) {
+    fetch(url + "/claim/" + itemid + "/getclaims")
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data)
+            for (let y = 0; y < data.length; y++) {
+                if (data[y].status == "PENDING") {
+                    fetch(url + "/claim/" + data[y].id + "/decline", {
+                        method: 'POST'
+                    })
+                }
+            }
+        })
 
-function declineClaim(claimId) {
-    console.log("Claim geweigerd")
-    let result = fetch(`${url}/claim/${claimId}/declined`, {
-        method: 'POST'
-
-    })
 }
 
 
@@ -77,10 +96,10 @@ function getAllItemsWithClaim() {
             <h5 class="card-title text-center">${data[y].name} </h5>
             <p class="card-text">
             <div class="d-grid gap-2">
-            <button type="button" type="button" class="btn btn-success" onclick="acceptClaim()">
+            <button type="button" type="button" class="btn btn-success" onclick="acceptClaim(${data[y].id})">
                 Accepteren
             </button> 
-            <button type="button" type="button" class="btn btn-danger" onclick="declineClaim()">
+            <button type="button" type="button" class="btn btn-danger" onclick="declineClaim(${data[y].id})">
                 Weigeren
             </button> 
             </div>
