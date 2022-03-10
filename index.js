@@ -1,7 +1,16 @@
 function claimItem(itemId) {
   localStorage.removeItem("itemid")
-  let result = fetch(url + '/claim/' + itemId + '/createclaim', {
-    method: 'POST'
+  const createClaimDto = {
+        "itemId": itemId,
+        "chatContentMessage": document.getElementById("first-chatcontent").value,
+  }
+  let data = JSON.stringify(createClaimDto);
+  let result = fetch(url + '/claim/createclaim', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: data
   })
   .then(() => {
     getSubmittedItems();
