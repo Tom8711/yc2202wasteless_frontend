@@ -3,6 +3,7 @@ function claimItem(itemId) {
   const createClaimDto = {
         "itemId": itemId,
         "chatContentMessage": document.getElementById("first-chatcontent").value,
+        "userId": localStorage.getItem("userId")
   }
   let data = JSON.stringify(createClaimDto);
   let result = fetch(url + '/claim/createclaim', {
