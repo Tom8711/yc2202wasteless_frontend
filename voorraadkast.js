@@ -45,12 +45,12 @@ function createItem() {
 }
 
 function acceptClaim(itemid) {
-   fetch(url + "/claim/" + itemid + "/accept", {
+    fetch(url + "/claim/" + itemid + "/accept", {
         method: 'POST'
     })
-    .then(response => {
-        getAllItemsWithClaim()
-    })
+        .then(response => {
+            getAllItemsWithClaim()
+        })
 
 }
 
@@ -58,9 +58,9 @@ function declineClaim(itemid) {
     fetch(url + "/claim/" + itemid + "/decline", {
         method: 'POST'
     })
-    .then(response => {
-        getAllItemsWithClaim()
-    })
+        .then(response => {
+            getAllItemsWithClaim()
+        })
 }
 
 
@@ -143,7 +143,12 @@ function getAllItemsSortedByDate() {
         </div>`;
                 }
             }
-            document.getElementById("itemList").innerHTML = resultString;
+            if (resultString) {
+                document.getElementById("myItemsHeader").classList.remove("d-none")
+            } else {
+                document.getElementById("myItemsHeader").classList.add("d-none")
+            }
+            document.getElementById("myItemsList").innerHTML = resultString;
         })
 }
 
