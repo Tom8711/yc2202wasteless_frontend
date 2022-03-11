@@ -34,7 +34,7 @@ function getSubmittedItems() {
         resultString += `
     <div class="col">
       <div class="card">
-        <img src="kaas.jpg" class="card-img-top" alt="...">
+        <img src="${data[y].photo}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">${data[y].name}`
             //Check if the user is logged in with if-else statement.
