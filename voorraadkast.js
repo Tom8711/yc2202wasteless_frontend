@@ -57,39 +57,22 @@ function createItem() {
 }
 
 function acceptClaim(itemid) {
-    fetch(url + "/claim/" + itemid + "/getclaims")
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data)
-            for (let y = 0; y < data.length; y++) {
-                if (data[y].status == "PENDING") {
-                    fetch(url + "/claim/" + data[y].id + "/accept", {
-                        method: 'POST'
-                    })
-                }
-            }
+    fetch(url + "/claim/" + itemid + "/accept", {
+        method: 'POST'
+    })
+        .then(response => {
+            getAllItemsWithClaim()
         })
 
 }
 
 function declineClaim(itemid) {
-    fetch(url + "/claim/" + itemid + "/getclaims")
-        .then((response) => {
-            return response.json();
+    fetch(url + "/claim/" + itemid + "/decline", {
+        method: 'POST'
+    })
+        .then(response => {
+            getAllItemsWithClaim()
         })
-        .then((data) => {
-            console.log(data)
-            for (let y = 0; y < data.length; y++) {
-                if (data[y].status == "PENDING") {
-                    fetch(url + "/claim/" + data[y].id + "/decline", {
-                        method: 'POST'
-                    })
-                }
-            }
-        })
-
 }
 
 
@@ -101,25 +84,30 @@ function getAllItemsWithClaim() {
         .then((data) => {
             let resultString = "";
             for (let y = 0; y < data.length; y++) {
-                resultString +=
-                    `<div class="col">
-        <div class="card">
-        <img src="${data[y].photo}" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h5 class="card-title text-center">${data[y].name} </h5>
-            <p class="card-text">
-            <div class="d-grid gap-2">
-            <button type="button" type="button" class="btn btn-success" onclick="acceptClaim(${data[y].id})">
-                Accepteren
-            </button> 
-            <button type="button" type="button" class="btn btn-danger" onclick="declineClaim(${data[y].id})">
-                Weigeren
-            </button> 
+                if (data[y].status != "DECLINED") {
+                    resultString +=
+                        `<div class="col">
+                <div class="card">
+                    <img src="${data[y].photo}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${data[y].item.name} </h5>
+                        <p class="card-text">
+                            <div class="d-grid gap-2">`
+                    if (data[y].status == "PENDING") {
+                        resultString += `<button type="button" type="button" class="btn btn-success" onclick="acceptClaim(${data[y].item.id})">
+                                        Accepteren </button> 
+                                        <button type="button" type="button" class="btn btn-danger" onclick="declineClaim(${data[y].item.id})">
+                                            Weigeren </button>`
+                    }
+                    else if (data[y].status == "APPROVED") {
+                        resultString += `<button type="button" type="button" class="btn btn-success"> Ga naar chat</button>`
+                    }
+                    resultString += `</div>`
+                    resultString += `</p>
+                     </div>
             </div>
-            </p>
-            </div>
-        </div>
-        </div>`;
+                </div>`;
+                }
             }
             if (resultString) {
                 document.getElementById("claimedItemsHeader").classList.remove("d-none")
@@ -167,7 +155,12 @@ function getAllItemsSortedByDate() {
         </div>`;
                 }
             }
-            document.getElementById("itemList").innerHTML = resultString;
+            if (resultString) {
+                document.getElementById("myItemsHeader").classList.remove("d-none")
+            } else {
+                document.getElementById("myItemsHeader").classList.add("d-none")
+            }
+            document.getElementById("myItemsList").innerHTML = resultString;
         })
 }
 
