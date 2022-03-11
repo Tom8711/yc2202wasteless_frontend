@@ -15,14 +15,26 @@ function updateOffered(itemId, offered) {
         });
 }
 
+var imageBase64 = '';
+
+    function encodeImgtoBase64(element) {
+        var file = element.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            imageBase64 = reader.result;
+        }
+        reader.readAsDataURL(file);
+    }
+
 function createItem() {
+    console.log(document.getElementById("offered").checked)
     const createItemDto = {
-        "item": {
-            "name": document.getElementById("name").value,
-            "expirationDate": document.getElementById("date").value,
-            "amount": document.getElementById("amount").value,
-            "offered": document.getElementById("offered").checked,
-            "photo": "./photos/kaas.jpg"
+        "item":{
+            "name":document.getElementById("name").value, 
+            "expirationDate":document.getElementById("date").value, 
+            "amount":document.getElementById("amount").value,
+            "offered":document.getElementById("offered").checked,
+            "photo":imageBase64
         },
         "userId": localStorage.getItem("userId")
     }
