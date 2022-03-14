@@ -17,35 +17,71 @@
     <script src="config.js"></script>
     <script src="index.js"></script>
     <script src="inloglink.js"></script>
+    <script src="uitlog.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="index.html" class="navbar-brand">Wasteless</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <!-- <a class="nav-item nav-link" aria-current="page" href="index.html">Home</a> -->
+                    <a class="nav-item nav-link" href="https://www.24kitchen.nl/">Recepten</a>
+                    <a class="nav-item nav-link disabled">Support</a>
+                </div>
+                <div class="navbar-nav ms-auto">
+                    <a href="login.html" class="nav-item nav-link" id="inloglink">Login</a>
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                          Mijn account
+                        </button>
+    
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="voorraadkast.html">Voorraadkast</a></li>
+                          <li><a class="dropdown-item" href="mijnclaim.html">Claims</a></li>
+                          <li><a class="dropdown-item" href="mijnchats.html">Chats</a></li>
+                          <li><a class="dropdown-item"  onclick="logOut()" href="#">Uitloggen</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                    <a class="nav-link" href="https://www.24kitchen.nl/">Recepten</a>
-                    <a class="nav-link disabled">Support</a>
-                    <a class="nav-link" id="inloglink" >inloggen</a>
-                </div>
+                <ul class="navbar-nav">
+                    <li><a class="nav-link" aria-current="page" href="index.html">Home</a></li>
+                    <li><a class="nav-link" href="https://www.24kitchen.nl/">Recepten</a></li>
+                    <li><a class="nav-link disabled">Support</a></li>
+                    <li><a class="nav-link" id="inloglink" >inloggen</a></li>
+                </ul>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       account
                     </button>
+
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a class="dropdown-item" href="voorraadkast.html">Mijn voorraadkast</a></li>
                       <li><a class="dropdown-item" href="mijnclaim.html">Mijn claims</a></li>
                       <li><a class="dropdown-item" href="mijnchats.html">Mijn chats</a></li>
                     </ul>
                 </div>
-            </div>
+                <ul class="nav">
+                <li><a id="logout" type="button" class="btn btn-secondary ml-auto"  onclick="logOut()" href="#">Uitloggen                    
+                    </a></li>
+            </ul>
         </div>
-    </nav>
+    </nav> -->
     <h1 class="header">Wasteless</h1>
     <button class="button btn btn-light" type="submit">
         <a href="registratie.html">Account maken</a>
